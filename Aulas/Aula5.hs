@@ -37,6 +37,10 @@ data Tree t = Leaf | Node t (Tree t) (Tree t)
 data Tree2 t = Leaf2 t | Node2 (Tree2 t) (Tree2 t)
     deriving Show
 
+collapse :: Tree t -> [t]
+collapse Leaf = []
+collapse (Node valor sub1 sub2) = [valor] ++ collapse sub1 ++ collapse sub2
+
 teste4, teste5 :: Tree String 
 teste4 = Node "abc" (Node "xy" Leaf Leaf) (Node "st" Leaf Leaf)
 teste5 = Node "aei" Leaf teste4 
