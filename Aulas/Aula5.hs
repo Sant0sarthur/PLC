@@ -41,6 +41,15 @@ collapse :: Tree t -> [t]
 collapse Leaf = []
 collapse (Node valor sub1 sub2) = [valor] ++ collapse sub1 ++ collapse sub2
 
+mapTree :: (t -> u) -> Tree t -> Tree u
+mapTree func Leaf = Leaf
+mapTRee func (Node valor sub1 sub2) = (Node (func valor) (mapTree func sub1) (mapTree func sub2))
+
+exprToTree2 :: Expr -> Tree2 Int
+exprToTree2 (Lit valor) = Leaf2 valor
+exprToTree2
+exprToTree2
+
 teste4, teste5 :: Tree String 
 teste4 = Node "abc" (Node "xy" Leaf Leaf) (Node "st" Leaf Leaf)
 teste5 = Node "aei" Leaf teste4 
