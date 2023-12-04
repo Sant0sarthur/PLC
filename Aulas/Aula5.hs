@@ -19,6 +19,7 @@ showExpr (Add subexp1 subexp2) = "(" ++ showExpr subexp1 ++ "+" ++ showExpr sube
 showExpr (Sub subexp1 subexp2) = "(" ++ showExpr subexp1 ++ "+" ++ showExpr subexp2 ++ ")" 
 
 data List t = Nil | Cons t (List t)
+    deriving Show
 
 teste3 :: List Int
 teste3 = Cons 1 (Cons 2 (Cons 3 Nil))
@@ -26,6 +27,10 @@ teste3 = Cons 1 (Cons 2 (Cons 3 Nil))
 tolist :: List t -> [t]
 tolist Nil = []
 tolist (Cons x xs) = x : tolist xs
+
+fromList :: [t] -> List t
+fromList [] = Nil
+fromList (x:xs) = Cons x (fromList xs)
 
 data Tree t = Leaf | Node t (Tree t) (Tree t)
     deriving Show
